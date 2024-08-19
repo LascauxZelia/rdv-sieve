@@ -3,7 +3,7 @@ Parameters
 
 To get a quick overview of all available command line options, run::
 
-   nextflow run LascauxZelia/sieve --help
+   nextflow run . -help
 
 Input/output options
 --------------------
