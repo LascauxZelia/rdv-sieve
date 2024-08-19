@@ -71,7 +71,7 @@ Or build it locally with the singularity recipe ``sieve.def`` available in sieve
 
 .. code-block:: console
 
-   sudo singularity build sieve01.sif sieve.def
+   sudo singularity build sieve_01.sif sieve.def
 
 
 .. NOTE::
@@ -82,50 +82,54 @@ If you want to see the version of the tools installed in the container, simply u
 
 .. code-block:: console
 
-   singularity exec sieve.sif conda list -n sieve
+   singularity exec sieve_<version>.sif conda list -n sieve
 
 Sieve
 -----
 
-Now you can either get sieve from Github or let Nextflow handle it. 
-
-.. code-block:: console
-
-    nextflow run LascauxZelia/sieve -help
-
-or 
+Now you can either get sieve from Github (recommended) or let Nextflow handle it. 
 
 .. code-block:: console
 
    git clone https://github.com/LascauxZelia/sieve.git
 
+   cd sieve
+
    nextflow run . -help
+
+or 
+
+.. code-block:: console
+
+    nextflow run LascauxZelia/sieve -r main -preview
 
 CAT database
 ------------
 
-In addition to these intallations, you will have to get the `CAT <https://github.com/dutilh/CAT#downloading-preconstructed-database-files>`_ database files on your system. You can either download preconstructed database files, or generate them yourself. 
+In addition to these intallations, you will have to get the `CAT <https://github.com/dutilh/CAT#downloading-preconstructed-database-files>`_ database files on your system. You can either download preconstructed database files, or generate them yourself.
 
 Downloading preconstructed database files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To download the database files, find the most recent version on `tbb.bio.uu.nl/tina/CAT_prepare/ <tbb.bio.uu.nl/tina/CAT_prepare/>`_ , download and extract, and you are ready to run the pipeline!
 
-For NCBI nr (recommended):
+For NCBI nr:
 
 .. code-block:: console
 
-    wget tbb.bio.uu.nl/tina/CAT_prepare/20231120_CAT_nr.tar.gz
+    wget tbb.bio.uu.nl/tina/CAT_prepare/<latest_version>_CAT_nr.tar.gz
 
-    tar -xvzf 20231120_CAT_nr.tar.gz
-
-For GTDB:
-
-.. code-block:: console
-
-    wget tbb.bio.uu.nl/tina/CAT_prepare/20231120_CAT_gtdb.tar.gz
-
-    tar -xvzf 20231120_CAT_gtdb.tar.gz
+    tar -xvzf <latest_version>_CAT_nr.tar.gz
 
 You can also creating a custom database, see the `instructions <https://github.com/dutilh/CAT#downloading-preconstructed-database-files>`_ . 
 
+In the 'CAT_prepare_<latest_version>' folder, the ‘path_to/<latest_version>_CAT_database/’ and ‘path_to/<latest_version>_taxonomy’ subfolders must be used as -cat_db and -cat_tax arguments. 
+
+.. NOTE::
+
+   To test the sieve pipeline without downloading the CAT_prepare database, we have included a small database that allows the user to test the installation with the ERS1073737 biosample. The database is available in the sieve folder.     
+
+.. WARNING::
+
+   If you don't download the preconstructed database files, or generate them yourself you won't be able to run sieve. 
+   GTDB preconstructed database files are not compatible with sieve.  
