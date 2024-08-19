@@ -1,53 +1,56 @@
-Invoking sieve
-==============
+Running sieve and user cases
+============================
 
-Do you want to reconstruct MAGs from a specific sample?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct MAGs from a specific sample
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Only one sample as the input. No filters are applied.
 
 .. code-block:: console
 
     nextflow run . \  
-        -with-singularity sieve.sif \  
+        -with-singularity sieve_01.sif \  
         --sample_accession ERS1073737 \  
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output \  
         --nodiamond --nomacsyfinder  
 
-Do you want to reconstruct MAGs from a specific organism?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all MAGs belonging to a specific taxon: Legionellales 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Same sample as the input with a taxonomic filter at order level. 
 
 .. code-block:: console
 
     nextflow run . \  
+        -with-singularity sieve_01.sif \ 
         --sample_accession ERS1073737 --taxonomyorder legionellales \  
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output \  
         --nodiamond --nomacsyfinder  
 
-Do you want to reconstruct MAGs by looking for specific genes?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all the MAGs belonging to a specific taxon and containing specific genes: Legionellales with T4BSS genes 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Same sample as input. Same taxonomic filters. New filter: Identification of genes of interest to the user.
 (All genes must be in fasta format in the same folder. Specify the real path of the folder in the --gene parameter)
 
 .. code-block:: console
 
     nextflow run . \  
+        -with-singularity sieve_01.sif \ 
         --sample_accession ERS1073737 --taxonomyorder legionellales \  
         --genes path/to/my/genes/ --diamond_min_align_reads 2 \  
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output \  
         --nomacsyfinder  
 
-Do you want to reconstruct MAGs by looking for macromolecular system? Pathways?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all the MAGs belonging to a specific taxon, containing specific genes and macromolecular system (pathways): Legionellales with T4BSS 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Same sample as input. Same taxonomic filter. Gene identification filter is also applied. New filter: Identification of macromolecular systems of interest to the user.
 (You can use a pre-built model from macsydata or your own).
 
 .. code-block:: console
 
     nextflow run . \  
+        -with-singularity sieve_01.sif \ 
         --sample_accession ERS1073737 --taxonomyorder legionellales \  
         --genes path/to/my/genes/ --diamond_min_align_reads 2 \  
         --model TXSScan --nbmodel bacteria/diderm/T1SS --coverage 0.7 \  
@@ -63,6 +66,7 @@ And we want to annotate and classify only bin with a completeness of 70% and a c
 .. code-block:: console
 
     nextflow run . \  
+        -with-singularity sieve_01.sif \ 
         --sample_accession ERS1073737 --taxonomyorder legionellales \  
         --genes path/to/my/genes/ --diamond_min_align_reads 2 \  
         --model TXSScan --nbmodel bacteria/diderm/T1SS --coverage 0.7 \  
@@ -80,6 +84,7 @@ We also specify the maximum number of CPUs, memory and time for the HPC cluster 
 .. code-block:: console
 
     nextflow run . \  
+        -with-singularity sieve_01.sif \ 
         --local --local_input path/to/samplesheet.csv --single-end \  
         --biome_name water --experiment_type metagenomic --taxonomyclass gammaproteobacteria \  
         --genes path/to/my/genes/ --diamond_min_align_reads 2 \  
