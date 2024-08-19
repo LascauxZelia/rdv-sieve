@@ -14,8 +14,11 @@ Only one sample as the input. No filters are applied.
         --resultsDir output \  
         --nodiamond --nomacsyfinder  
 
-I want to reconstruct all MAGs belonging to a specific taxon: Legionellales 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all MAGs belonging to a specific taxon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Example: Legionellales
+
 Same sample as the input with a taxonomic filter at order level. 
 
 .. code-block:: console
@@ -27,8 +30,11 @@ Same sample as the input with a taxonomic filter at order level.
         --resultsDir output \  
         --nodiamond --nomacsyfinder  
 
-I want to reconstruct all the MAGs belonging to a specific taxon and containing specific genes: Legionellales with T4BSS genes 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all the MAGs belonging to a specific taxon and containing specific genes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Example: Legionellales with presence of T4BSS genes
+
 Same sample as input. Same taxonomic filters. New filter: Identification of genes of interest to the user.
 (All genes must be in fasta format in the same folder. Specify the real path of the folder in the --gene parameter)
 
@@ -42,8 +48,11 @@ Same sample as input. Same taxonomic filters. New filter: Identification of gene
         --resultsDir output \  
         --nomacsyfinder  
 
-I want to reconstruct all the MAGs belonging to a specific taxon, containing specific genes and macromolecular system (pathways): Legionellales with T4BSS 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all the MAGs belonging to a specific taxon, containing specific genes and macromolecular system (pathways)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Example: Legionellales with T4BSS
+
 Same sample as input. Same taxonomic filter. Gene identification filter is also applied. New filter: Identification of macromolecular systems of interest to the user.
 (You can use a pre-built model from macsydata or your own).
 
@@ -57,8 +66,10 @@ Same sample as input. Same taxonomic filter. Gene identification filter is also 
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output  
 
-Do you want to reconstruct MAGs using specific binning algorithm and quality criteria?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all the MAGs belonging to a specific taxon, containing specific genes and macromolecular system (or pathways) using specific binning algorithm and quality criteria 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Example: Legionellales with T4BSS, bin with concoct and select bin with a completeness of 70% and a contamination of maximum 20%
 
 Same input and filters as above. Only one binning algorithm is used here (concoct). We decide to change the binning size (default 1000). 
 And we want to annotate and classify only bin with a completeness of 70% and a contamination of maximum 20% (i.e. a redundancy of 1.2).
@@ -75,8 +86,8 @@ And we want to annotate and classify only bin with a completeness of 70% and a c
         --resultsDir output  
 
 
-Do you want to use local and public metagenomes?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I want to reconstruct all the MAGs belonging to a specific biome and taxon from local and public metagenomes, containing specific genes and macromolecular system using specific quality criteria 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The input will be some local metagenomes (single end) and metagenomes from the aquatic biome. We are looking for gammaproteobacterial genomes that contain specific genes and macromolecular systems. 
 We classify all bins here, even those with less than 50% completeness and more than 10% contamination. 
 We also specify the maximum number of CPUs, memory and time for the HPC cluster (for the base.config file). 
