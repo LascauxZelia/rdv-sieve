@@ -91,7 +91,7 @@ The typical command for running the pipeline is as follows:
 
 .. code-block:: console
 
-   nextflow run main.nf --with-singularity sieve01.sif --resultsDir <OUTDIR> --cat_db <PATH/TO/CAT_database> --cat_taxonomy <PATH/TO/CAT_taxonomy>
+   nextflow run main.nf --with-singularity sieve_01.sif --resultsDir <OUTDIR> --cat_db <PATH/TO/CAT_database> --cat_taxonomy <PATH/TO/CAT_taxonomy>
 
 Note that the pipeline will create the following files in your working directory:
 
