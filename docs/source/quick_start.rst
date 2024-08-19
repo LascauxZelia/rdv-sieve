@@ -8,11 +8,11 @@ Only one sample as the input. No filters are applied.
 .. code-block:: console
 
     nextflow run . \  
-        -with-singularity sieve_01.sif \  
-        --sample_accession ERS1073737 \  
-        --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
-        --resultsDir output \  
-        --nodiamond --nomacsyfinder  
+        -with-singularity sieve_01.sif \  #Use the sieve_01 singularity container. 
+        --sample_accession ERS1073737 \  # Enter a specific sample accession number available on MGnify database
+        --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  # Absolute path of the CAT database and CAT taxonomy or custom database
+        --resultsDir output \  #The output directory 
+        --nodiamond --nomacsyfinder  #Skip diamond (db and aligment) and MacSyFinder processes 
 
 I want to reconstruct all MAGs belonging to a specific taxon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -25,7 +25,8 @@ Same sample as the input with a taxonomic filter at order level.
 
     nextflow run . \  
         -with-singularity sieve_01.sif \ 
-        --sample_accession ERS1073737 --taxonomyorder legionellales \  
+        --sample_accession ERS1073737 \ 
+        --taxonomyorder legionellales \  #Taxonomic filter add one or more order names
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output \  
         --nodiamond --nomacsyfinder  
@@ -43,7 +44,8 @@ Same sample as input. Same taxonomic filters. New filter: Identification of gene
     nextflow run . \  
         -with-singularity sieve_01.sif \ 
         --sample_accession ERS1073737 --taxonomyorder legionellales \  
-        --genes path/to/my/genes/ --diamond_min_align_reads 2 \  
+        --genes path/to/my/genes/  \ #Diamond process: A single path to one or several local fasta files in order to construct diamond database
+        --diamond_min_align_reads 2 \  #Checks if the number of observed alignment from diamond analysis is not greater than this specified threshold
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output \  
         --nomacsyfinder  
@@ -62,7 +64,9 @@ Same sample as input. Same taxonomic filter. Gene identification filter is also 
         -with-singularity sieve_01.sif \ 
         --sample_accession ERS1073737 --taxonomyorder legionellales \  
         --genes path/to/my/genes/ --diamond_min_align_reads 2 \  
-        --model TXSScan --nbmodel bacteria/diderm/T1SS --coverage 0.7 \  
+        --model TXSScan  \ #
+        --nbmodel bacteria/diderm/T1SS  \ #
+        --coverage 0.7 \  #
         --cat_db /your/path/to/cat_db --cat_taxonomy /your/path/to/cat_tax \  
         --resultsDir output  
 
