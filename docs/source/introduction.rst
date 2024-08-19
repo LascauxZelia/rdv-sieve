@@ -46,12 +46,12 @@ To see the results of an example test run with a full size dataset refers to res
 Inputs
 ------
 
-The pipeline supports two types of input. 
+The pipeline supports two types of input. You can use your own metagenomic data (in `.fastq.gz` format), the metagenomic data you are interested in from the MGnify database, or both. 
 
 Local data
 ~~~~~~~~~~
 
-The user can enter their own data by adding the flag ``--local``. All raw reads must be in the same directory and have the same extension ``.fastq.gz``. 
+The user can enter their own metagenomics data by adding the flag ``--local``. All raw reads must be in the same directory and have the same extension ``.fastq.gz``. 
 
 In the command line the user must add ``--local_input`` with the path of the samples sheet (csv format). The samples file specifies the samples, the path of the corresponding raw read files and the biome lineage, separated by commas. A template is available `here <https://github.com/LascauxZelia/sieve>`_ . 
 
@@ -64,14 +64,14 @@ It has the format: ``sample,read_1,read_2,biome``. For more details please refer
 MGnify API
 ~~~~~~~~~~
 
-The pipeline can be run with metagenomic data from the European public database EBI. The data are retrieved using `MGnify API <https://www.ebi.ac.uk/metagenomics>`_ .
+The pipeline can be run with metagenomic data from the European public database EBI. The data are retrieved using `MGnify API <https://www.ebi.ac.uk/metagenomics>`_ . You can retrieve metagenomic or assembly data using the MGnify API. You can search for a specific sample, study, sequencing platform, biome and so on. Sieve will automatically sort (based on taxonomic filters that you can define, for example retain all the metagenomes in this study that contain reads affiliated with ‘Legionella’) and download the metagenomes of interest to you.  
 
 The MGnify ressource: 
    "Microbiome research involves the study of all genomes present within a specific environment. The approach can provide unique insights into the complex processes performed by environmental micro-organisms and their relationship to their surroundings, to each other, and, in some cases, to their host.
 
    MGnify offers an automated pipeline for the analysis and archiving of microbiome data to help determine the taxonomic diversity and functional & metabolic potential of environmental samples. Users can submit their own data for analysis or freely browse all of the analysed public datasets held within the repository. In addition, users can request analysis of any appropriate dataset within the European Nucleotide Archive (ENA). User-submitted or ENA-derived datasets can also be assembled on request, prior to analysis."
 
-If you use the MGnify API option as input please cite the article: Lorna Richardson, Ben Allen, Germana Baldi, Martin Beracochea, Maxwell L Bileschi, Tony Burdett, Josephine Burgin, Juan Caballero-Pérez, Guy Cochrane, Lucy J Colwell, Tom Curtis, Alejandra Escobar-Zepeda, Tatiana A Gurbich, Varsha Kale, Anton Korobeynikov, Shriya Raj, Alexander B Rogers, Ekaterina Sakharova, Santiago Sanchez, Darren J Wilkinson, Robert D Finn, MGnify: the microbiome sequence data analysis resource in 2023, Nucleic Acids Research, Volume 51, Issue D1, 6 January 2023, Pages D753–D759, https://doi.org/10.1093/nar/gkac1080
+If you use the MGnify API option as input please cite the article: Richardson et al, NAR 2023,DOI: https://doi.org/10.1093/nar/gkac1080
 
 For more details, please refer to the :doc: `input <input>` documentation. 
 
